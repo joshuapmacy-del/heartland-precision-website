@@ -8,7 +8,7 @@
 
   <meta
     name="description"
-    content="Veteran-owned drone inspection, mapping, thermal imaging and agricultural imaging services in Nebraska."
+    content="Veteran-owned drone inspection, mapping, thermal imaging, agricultural imaging and construction documentation services in Nebraska."
   >
 
   <style>
@@ -38,6 +38,10 @@
       background: var(--white);
     }
 
+    img {
+      max-width: 100%;
+    }
+
     header {
       background: var(--white);
       border-bottom: 1px solid #dddddd;
@@ -48,7 +52,7 @@
 
     nav {
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
       padding: 18px 24px;
       display: flex;
       justify-content: space-between;
@@ -85,14 +89,14 @@
       align-items: center;
       background:
         linear-gradient(rgba(20, 35, 24, 0.79), rgba(20, 35, 24, 0.79)),
-        url("images/drone-hero.jpg") center/cover;
+        url("images/drone-hero.jpg") center center / cover no-repeat;
       color: var(--white);
     }
 
     .hero-content {
       width: 100%;
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
     }
 
     .eyebrow {
@@ -128,6 +132,12 @@
       border-radius: 5px;
       text-decoration: none;
       font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
     }
 
     .button-primary {
@@ -146,7 +156,7 @@
 
     .section-container {
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
     }
 
     .section-heading {
@@ -212,24 +222,15 @@
       margin-right: 10px;
     }
 
-    .placeholder {
-      min-height: 360px;
-      border-radius: 10px;
-      background: var(--dark-green);
-      color: var(--white);
-      display: grid;
-      place-items: center;
-      padding: 30px;
-      text-align: center;
-    }
     .about-image {
-  display: block;
-  width: 100%;
-  min-height: 360px;
-  max-height: 500px;
-  object-fit: cover;
-  border-radius: 10px;
-}
+      display: block;
+      width: 100%;
+      min-height: 360px;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
 
     .contact {
       background: var(--dark-green);
@@ -254,6 +255,19 @@
       padding: 30px 20px;
     }
 
+    footer p + p {
+      margin-top: 6px;
+    }
+
+    footer a {
+      color: #ead19f;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 850px) {
       nav {
         align-items: flex-start;
@@ -267,6 +281,32 @@
 
       .hero {
         min-height: 550px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+
+      .about-image {
+        min-height: 280px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-links {
+        gap: 12px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      .hero {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
@@ -282,8 +322,8 @@
       <div class="nav-links">
         <a href="#services">Services</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
         <a href="#booking">Book Service</a>
+        <a href="#contact">Contact</a>
       </div>
     </nav>
   </header>
@@ -316,6 +356,7 @@
       <div class="section-container">
         <div class="section-heading">
           <h2>Drone Services</h2>
+
           <p>
             Actionable aerial data for property owners, farmers,
             contractors and Nebraska businesses.
@@ -325,6 +366,7 @@
         <div class="service-grid">
           <article class="service-card">
             <h3>Agricultural Imaging</h3>
+
             <p>
               Crop scouting, plant-health imagery, field mapping and
               repeatable aerial documentation.
@@ -333,6 +375,7 @@
 
           <article class="service-card">
             <h3>Roof Inspections</h3>
+
             <p>
               Detailed aerial imagery of residential and commercial roofs
               without unnecessary ladder access.
@@ -341,6 +384,7 @@
 
           <article class="service-card">
             <h3>Thermal Inspections</h3>
+
             <p>
               Thermal imagery supporting building, roof, equipment and
               infrastructure assessments.
@@ -349,6 +393,7 @@
 
           <article class="service-card">
             <h3>Construction Progress</h3>
+
             <p>
               Scheduled aerial photos and videos that document progress
               throughout a project.
@@ -357,6 +402,7 @@
 
           <article class="service-card">
             <h3>Aerial Mapping</h3>
+
             <p>
               High-resolution orthomosaics, site maps, measurements and
               visual documentation.
@@ -365,6 +411,7 @@
 
           <article class="service-card">
             <h3>Commercial Media</h3>
+
             <p>
               Professional aerial photography and video for properties,
               businesses and promotional projects.
@@ -393,15 +440,15 @@
             <li>Clear reports and customer deliverables</li>
           </ul>
         </div>
-<div>
-  <img
-    class="about-image"
-    src="images/about-drone.jpg"
-    alt="Heartland Precision Technologies drone operations in Nebraska"
-    loading="lazy"
-  >
-</div>
-       
+
+        <div>
+          <img
+            class="about-image"
+            src="images/about-drone.jpg"
+            alt="Heartland Precision Technologies drone operations in Nebraska"
+            loading="lazy"
+          >
+        </div>
       </div>
     </section>
 
@@ -414,10 +461,9 @@
           needs and contact you with availability and pricing.
         </p>
 
-        <!-- Replace this email address with your business email -->
         <a
           class="button button-primary"
-          href="mailto:info@heartlandprecisiontech.com"
+          href="mailto:info@heartlandprecisiontech.com?subject=Drone%20Service%20Quote%20Request"
         >
           Request a Quote
         </a>
@@ -427,11 +473,21 @@
 
   <footer id="contact">
     <p>
-      © 2026 Heartland Precision Technologies LLC
+      <strong>Heartland Precision Technologies LLC</strong>
     </p>
 
     <p>
-      Serving Lincoln and communities throughout Nebraska
+      Veteran-owned drone services based in Lincoln, Nebraska
+    </p>
+
+    <p>
+      <a href="mailto:info@heartlandprecisiontech.com">
+        info@heartlandprecisiontech.com
+      </a>
+    </p>
+
+    <p>
+      © 2026 Heartland Precision Technologies LLC
     </p>
   </footer>
 </body>
