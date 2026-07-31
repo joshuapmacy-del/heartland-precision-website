@@ -222,6 +222,14 @@
       padding: 30px;
       text-align: center;
     }
+    .about-image {
+  display: block;
+  width: 100%;
+  min-height: 360px;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
     .contact {
       background: var(--dark-green);
@@ -385,10 +393,15 @@
             <li>Clear reports and customer deliverables</li>
           </ul>
         </div>
-
-        <div class="placeholder">
-          Add a photograph of your drone, an inspection or a Nebraska field here.
-        </div>
+<div>
+  <img
+    class="about-image"
+    src="images/about-drone.jpg"
+    alt="Heartland Precision Technologies drone operations in Nebraska"
+    loading="lazy"
+  >
+</div>
+       
       </div>
     </section>
 
