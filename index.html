@@ -83,20 +83,34 @@
     }
 
     .hero {
-      min-height: 650px;
-      padding: 100px 24px;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(rgba(20, 35, 24, 0.79), rgba(20, 35, 24, 0.79)),
-        url("images/drone-hero.jpg") center center / cover no-repeat;
+      padding: 0;
+      background: #101711;
+    }
+
+    .hero-banner {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-cta {
+      padding: 28px 24px;
+      background: var(--dark-green);
       color: var(--white);
     }
 
-    .hero-content {
-      width: 100%;
+    .hero-cta-content {
       max-width: 1200px;
       margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .hero-cta h1 {
+      font-size: clamp(1.4rem, 3vw, 2.25rem);
+      margin: 0;
     }
 
     .eyebrow {
@@ -112,12 +126,6 @@
       font-size: clamp(2.5rem, 6vw, 5rem);
       line-height: 1.05;
       margin-bottom: 24px;
-    }
-
-    .hero p {
-      max-width: 700px;
-      font-size: 1.25rem;
-      margin-bottom: 32px;
     }
 
     .buttons {
@@ -279,10 +287,9 @@
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        min-height: 550px;
-        padding-top: 80px;
-        padding-bottom: 80px;
+      .hero-cta-content {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
       .about-image {
@@ -297,11 +304,6 @@
 
       section {
         padding: 60px 20px;
-      }
-
-      .hero {
-        padding-left: 20px;
-        padding-right: 20px;
       }
 
       .button {
@@ -329,25 +331,24 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-content">
-        <div class="eyebrow">Veteran-Owned • Nebraska-Based</div>
+    <section class="hero" aria-label="Heartland Precision Technologies services">
+      <img
+        class="hero-banner"
+        src="images/heartland-precision-banner.png"
+        alt="Heartland Precision Technologies promotional banner featuring a multispectral drone over Nebraska farmland and a summary of available drone services"
+        width="1536"
+        height="1024"
+        fetchpriority="high"
+      >
+    </section>
 
+    <section class="hero-cta" aria-label="Request a quote">
+      <div class="hero-cta-content">
         <h1>Precision Drone Solutions for Nebraska</h1>
 
-        <p>
-          Professional aerial inspections, agricultural imaging, thermal
-          analysis, mapping and construction documentation.
-        </p>
-
         <div class="buttons">
-          <a class="button button-primary" href="#booking">
-            Request a Quote
-          </a>
-
-          <a class="button button-secondary" href="#services">
-            View Services
-          </a>
+          <a class="button button-primary" href="#booking">Request a Quote</a>
+          <a class="button button-secondary" href="#services">View Services</a>
         </div>
       </div>
     </section>
@@ -444,7 +445,7 @@
         <div>
           <img
             class="about-image"
-            src="images/about-drone.jpg"
+            src="images/heartland-precision-banner.png"
             alt="Heartland Precision Technologies drone operations in Nebraska"
             loading="lazy"
           >
