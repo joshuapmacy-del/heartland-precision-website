@@ -256,6 +256,32 @@
       margin: 0 auto 28px;
     }
 
+    .quote-form {
+      max-width: 820px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+      background: var(--white);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+    }
+
+    .quote-form iframe {
+      display: block;
+      width: 100%;
+      min-height: 1320px;
+      border: 0;
+    }
+
+    .form-fallback {
+      margin: 20px auto 0;
+      font-size: 0.95rem;
+    }
+
+    .form-fallback a {
+      color: #ead19f;
+      font-weight: 700;
+    }
+
     footer {
       background: #131915;
       color: #dddddd;
@@ -462,12 +488,20 @@
           needs and contact you with availability and pricing.
         </p>
 
-        <a
-          class="button button-primary"
-          href="mailto:info@heartlandprecisiontech.com?subject=Drone%20Service%20Quote%20Request"
-        >
-          Request a Quote
-        </a>
+        <div class="quote-form">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfZ6QFHJciR22qQXlrDJq4s2yfqphG7PFrk1uqD5wqmQWZ79A/viewform?embedded=true"
+            title="Request drone services from Heartland Precision Technologies"
+            loading="lazy"
+          >
+            Loading quote request form…
+          </iframe>
+        </div>
+
+        <p class="form-fallback">
+          If the form does not load,
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZ6QFHJciR22qQXlrDJq4s2yfqphG7PFrk1uqD5wqmQWZ79A/viewform" target="_blank" rel="noopener">open the quote form in a new window</a>.
+        </p>
       </div>
     </section>
   </main>
