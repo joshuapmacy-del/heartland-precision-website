@@ -643,6 +643,7 @@
     const quoteForm = document.getElementById("quote-request-form");
     const statusMessage = document.getElementById("form-status");
     const submitButton = quoteForm.querySelector(".form-submit");
+    const submissionFrame = document.getElementById("quote-submission-frame");
     let quoteSubmitted = false;
     let submissionTimeout;
 
@@ -669,11 +670,8 @@
     });
 
     window.addEventListener("message", (event) => {
-      const trustedGoogleOrigin =
-        event.origin === "https://script.google.com" ||
-        event.origin.endsWith(".googleusercontent.com");
       if (
-        !trustedGoogleOrigin ||
+        event.source !== submissionFrame.contentWindow ||
         !event.data ||
         event.data.source !== "heartland-quote-form" ||
         !quoteSubmitted
@@ -703,4 +701,3 @@
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcjTJXYogtTJJcafc7FGD86OndkezpeI0&loading=async&callback=initAddressAutocomplete&libraries=places&v=weekly"></script>
 </body>
 </html>
-
