@@ -526,7 +526,6 @@
           id="quote-request-form"
           action="https://script.google.com/macros/s/AKfycbzwlgM7pbAvgnZXJWykVPgr3961Di20uhqQhQzRuH45ySBIxzIi7BK84wrw9cq_4PVfDA/exec"
           method="POST"
-          target="quote-submission-frame"
         >
           <div class="form-grid">
             <div class="form-field">
@@ -643,9 +642,29 @@
     const quoteForm = document.getElementById("quote-request-form");
     const statusMessage = document.getElementById("form-status");
     const submitButton = quoteForm.querySelector(".form-submit");
-    const submissionFrame = document.getElementById("quote-submission-frame");
-    let quoteSubmitted = false;
-    let submissionTimeout;
+
+    const quoteResult = new URLSearchParams(window.location.search);
+    const quoteStatus = quoteResult.get("quote-status");
+    if (quoteStatus === "success") {
+      statusMessage.textContent =
+        quoteResult.get("quote-message") ||
+        "Thank you. Your quote request has been received.";
+    } else if (quoteStatus === "error") {
+      statusMessage.textContent =
+        quoteResult.get("quote-message") ||
+        "We could not send your request. Please try again or email info@heartlandprecisiontech.com.";
+    }
+
+    if (quoteStatus) {
+      quoteResult.delete("quote-status");
+      quoteResult.delete("quote-message");
+      const remainingQuery = quoteResult.toString();
+      window.history.replaceState(
+        {},
+        "",
+        window.location.pathname + (remainingQuery ? "?" + remainingQuery : "") + "#booking"
+      );
+    }
 
     quoteForm.addEventListener("submit", (event) => {
       if (!document.getElementById("property-address").value.trim()) {
@@ -656,46 +675,8 @@
         return;
       }
 
-      quoteSubmitted = true;
       submitButton.disabled = true;
       statusMessage.textContent = "Sending your request…";
-      clearTimeout(submissionTimeout);
-      submissionTimeout = setTimeout(() => {
-        if (!quoteSubmitted) return;
-        quoteSubmitted = false;
-        submitButton.disabled = false;
-        statusMessage.textContent =
-          "We could not confirm your request. Your information is still here—please try again or email info@heartlandprecisiontech.com.";
-      }, 20000);
-    });
-
-    window.addEventListener("message", (event) => {
-      if (
-        event.source !== submissionFrame.contentWindow ||
-        !event.data ||
-        event.data.source !== "heartland-quote-form" ||
-        !quoteSubmitted
-      ) {
-        return;
-      }
-
-      clearTimeout(submissionTimeout);
-      quoteSubmitted = false;
-      submitButton.disabled = false;
-
-      if (!event.data.ok) {
-        statusMessage.textContent =
-          event.data.message ||
-          "We could not send your request. Please try again or email info@heartlandprecisiontech.com.";
-        return;
-      }
-
-      quoteForm.reset();
-      document.getElementById("property-address").value = "";
-      document.getElementById("address-note").textContent =
-        "Start typing, then select the correct address from the suggestions.";
-      statusMessage.textContent =
-        event.data.message || "Thank you. Your quote request has been received.";
     });
   </script>
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcjTJXYogtTJJcafc7FGD86OndkezpeI0&loading=async&callback=initAddressAutocomplete&libraries=places&v=weekly"></script>
